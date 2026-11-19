@@ -16,6 +16,11 @@ Route::get('/', [PublicEventController::class, 'index'])->name('home');
 Route::get('/events', [PublicEventController::class, 'index'])->name('events.index');
 Route::get('/events/{event:slug}', [PublicEventController::class, 'show'])->name('events.show');
 
+// Health check endpoint for UptimeRobot to keep Render free tier awake
+Route::get('/health', function () {
+    return response()->json(['status' => 'ok', 'timestamp' => now()], 200);
+});
+
 Route::get('/dashboard', function () {
     $user = request()->user();
 
