@@ -15,6 +15,12 @@ if [ "$RUN_MIGRATIONS" = "true" ]; then
     php artisan migrate --force || true
 fi
 
+# Run seeder if enabled in environment variables
+if [ "$RUN_SEEDER" = "true" ]; then
+    echo "Running database seeder..."
+    php artisan db:seed --force || true
+fi
+
 # Optimize Laravel for production
 php artisan config:cache || true
 php artisan route:cache || true
