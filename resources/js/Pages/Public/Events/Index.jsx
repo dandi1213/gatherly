@@ -82,10 +82,7 @@ export default function Index({ events, categories, filters }) {
             <section className="bg-indigo-700 text-white">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <div className="max-w-2xl">
-                        <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">
-                            Event management &amp; tiket digital gratis
-                        </span>
-                        <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-5xl">
+                        <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">
                             Temukan event berikutnya, dapatkan tiketnya dalam satu klik.
                         </h1>
                         <p className="mt-4 text-base text-indigo-100 sm:text-lg">
