@@ -15,7 +15,7 @@ function EventCard({ event }) {
             href={route('events.show', event.slug)}
             className="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
         >
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-600">
+            <div className="relative aspect-[16/9] w-full overflow-hidden bg-indigo-600">
                 {event.poster_url ? (
                     <img
                         src={event.poster_url}
@@ -79,7 +79,7 @@ export default function Index({ events, categories, filters }) {
         <PublicLayout>
             <Head title="Jelajahi Event" />
 
-            <section className="bg-gradient-to-br from-indigo-700 via-indigo-600 to-purple-600 text-white">
+            <section className="bg-indigo-700 text-white">
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                     <div className="max-w-2xl">
                         <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide">

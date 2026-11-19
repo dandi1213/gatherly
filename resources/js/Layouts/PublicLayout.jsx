@@ -164,7 +164,6 @@ export default function PublicLayout({ children }) {
             <footer className="mt-16 border-t border-gray-200 bg-white py-8 print:hidden">
                 <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 text-sm text-gray-500 sm:flex-row sm:px-6 lg:px-8">
                     <p>&copy; {new Date().getFullYear()} Gatherly. Event management &amp; tiket digital gratis.</p>
-                    <p>Dibuat dengan Laravel, Inertia, dan React.</p>
                 </div>
             </footer>
         </div>

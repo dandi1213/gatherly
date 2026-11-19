@@ -1,3 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom NProgress styling to hide bar, center spinner, block clicks/scroll without layout shifting */
+#nprogress .bar {
+  display: none !important;
+}
+
+/* Block clicks and interaction without modifying document body scrollbar layout to prevent shifting */
+html.nprogress-busy,
+body.nprogress-busy {
+  pointer-events: none !important;
+}
+
+/* Prevent body content shift by keeping scrollbar space reserved */
+html.nprogress-busy {
+  overflow-y: scroll !important;
+}
+
+/* Ensure the spinner itself remains interactive and stays fixed in exact center */
+#nprogress {
+  pointer-events: auto !important;
+}
+
+#nprogress .spinner {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 99999 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: auto !important;
+}
+
+#nprogress .spinner-icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-width: 4px !important;
+  border-top-color: #3b82f6 !important;
+  border-left-color: #3b82f6 !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+}

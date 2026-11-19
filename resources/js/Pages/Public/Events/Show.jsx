@@ -36,7 +36,7 @@ export default function Show({ event, ticketTypes, myRegistration, registrationO
                 <div className="mt-4 grid gap-8 lg:grid-cols-[380px_1fr]">
                     <div>
                         <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-                            <div className="aspect-[4/5] w-full bg-gradient-to-br from-indigo-500 via-indigo-600 to-purple-600">
+                            <div className="aspect-[4/5] w-full bg-indigo-600">
                                 {event.poster_url ? (
                                     <img src={event.poster_url} alt={event.title} className="h-full w-full object-cover" />
                                 ) : (

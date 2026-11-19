@@ -119,7 +119,7 @@ export default function Show({ ticket, qrSvg, canCancel }) {
                 {/* Main Ticket Card */}
                 <div className="mt-6 overflow-hidden rounded-3xl border border-gray-200/80 bg-white shadow-xl shadow-gray-200/50 print:mt-0 print:rounded-2xl print:shadow-none print:border print:border-gray-300">
                     {/* Header Banner */}
-                    <div className="relative bg-gradient-to-r from-indigo-700 via-indigo-600 to-purple-600 p-6 text-white sm:p-8 print:p-4 print:from-indigo-800 print:to-indigo-900">
+                    <div className="relative bg-indigo-700 p-6 text-white sm:p-8 print:p-4 print:bg-indigo-800">
                         <div className="flex flex-wrap items-center justify-between gap-2">
                             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur-sm print:px-2.5 print:py-0.5 print:text-[10px]">
                                 <span className="h-2 w-2 rounded-full bg-emerald-400 print:hidden animate-pulse"></span>
