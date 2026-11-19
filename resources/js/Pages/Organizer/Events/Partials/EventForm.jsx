@@ -6,7 +6,7 @@ import TextInput from '@/Components/TextInput';
 import { Link, useForm } from '@inertiajs/react';
 
 export default function EventForm({ event = null, categories, submitRoute, method = 'post' }) {
-    const { data, setData, post, patch, processing, errors, progress } = useForm({
+    const { data, setData, post, processing, errors, progress } = useForm({
         title: event?.title ?? '',
         description: event?.description ?? '',
         category_id: event?.category_id ?? '',
@@ -28,11 +28,10 @@ export default function EventForm({ event = null, categories, submitRoute, metho
     const submit = (e) => {
         e.preventDefault();
 
-        if (method === 'patch') {
-            patch(submitRoute, { forceFormData: true });
-        } else {
-            post(submitRoute, { forceFormData: true });
-        }
+        // PHP hanya mem-parsing multipart/form-data untuk request POST.
+        // Gunakan POST + field _method untuk spoofing PATCH agar file dan
+        // seluruh field teks tetap terbaca saat ada upload poster.
+        post(submitRoute, { forceFormData: true });
     };
 
     const field = (label, name, type = 'text', extra = {}) => (
