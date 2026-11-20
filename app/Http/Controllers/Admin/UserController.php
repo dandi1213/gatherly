@@ -19,10 +19,10 @@ class UserController extends Controller
                 ->filterColumn('email', function ($model) use ($request) {
                     $model->where('email', 'like', '%'.$request->get('search')['value'].'%');
                 })
-                ->editColumn('role', fn ($model) => roleBadge($model->role))
+                ->editColumn('role', fn ($model) => '<span class="inline-flex rounded-full border border-line bg-canvas px-2 py-0.5 text-xs font-semibold text-muted">'.e(ucfirst($model->role)).'</span>')
                 ->editColumn('is_active', fn ($model) => $model->is_active
-                        ? '<span class="text-green-600">Aktif</span>'
-                        : '<span class="text-red-600">Nonaktif</span>'
+                        ? '<span class="inline-flex items-center gap-1.5 rounded-full border border-success-100 bg-success-50 px-2 py-0.5 text-xs font-semibold text-success-700"><span class="h-1.5 w-1.5 rounded-full bg-success-700"></span>Aktif</span>'
+                        : '<span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-canvas px-2 py-0.5 text-xs font-semibold text-muted"><span class="h-1.5 w-1.5 rounded-full bg-zinc-400"></span>Nonaktif</span>'
                 )
                 ->editColumn('actions', fn ($model) => view('admin.users.partials._actions', ['user' => $model]))
                 ->rawColumns(['role', 'is_active', 'actions'])

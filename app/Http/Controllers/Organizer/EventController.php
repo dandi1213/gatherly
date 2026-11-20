@@ -24,13 +24,19 @@ class EventController extends Controller
     {
         $user = $request->user();
 
-        $events = Event::query()
-            ->where('organizer_id', $user->id)
-            ->with('category')
-            ->withCount('registrations')
-            ->latest()
-            ->paginate(10)
-            ->withQueryString();
+        $cacheKey = "organizer_events_{$user->id}_" . $request->get('page', 1);
+        $events = Cache::remember($cacheKey, now()->addSeconds(60), function () use ($user, $request) {
+            return Event::query()
+                ->where('organizer_id', $user->id)
+                // only the fields we actually display in the Inertia page
+                ->select(['id', 'title', 'slug', 'status', 'category_id', 'created_at'])
+                // eager‑load category but only its id & name
+                ->with(['category:id,name'])
+                ->withCount('registrations')
+                ->latest()
+                ->paginate(10)
+                ->appends($request->except('page'));
+        });
 
         return Inertia::render('Organizer/Events/Index', [
             'events' => $events,

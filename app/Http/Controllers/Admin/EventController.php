@@ -30,11 +30,11 @@ class EventController extends Controller
                 })
                 ->editColumn('organizer_name', fn ($model) => $model->organizer?->name ?? '—')
                 ->editColumn('category_name', fn ($model) => $model->category?->name ?? '—')
-                ->editColumn('status_badge', fn ($model) => '<span class="inline-flex rounded-full px-2 py-0.5 text-xs font-semibold '.match ($model->status) {
-                    'draft' => 'bg-gray-100 text-gray-800',
-                    'published' => 'bg-green-100 text-green-800',
-                    'cancelled' => 'bg-red-100 text-red-800',
-                }.'">'.ucfirst($model->status).'</span>')
+                ->editColumn('status_badge', fn ($model) => '<span class="inline-flex rounded-full border px-2 py-0.5 text-xs font-semibold '.match ($model->status->value) {
+                    'draft' => 'border-warning-100 bg-warning-50 text-warning-700',
+                    'published' => 'border-success-100 bg-success-50 text-success-700',
+                    'cancelled' => 'border-danger-100 bg-danger-50 text-danger-700',
+                }.'">'.e($model->status->label()).'</span>')
                 ->editColumn('actions', fn ($model) => view('admin.events.partials._actions', ['event' => $model]))
                 ->rawColumns(['status_badge', 'actions'])
                 ->make(true);
@@ -60,7 +60,7 @@ class EventController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'format' => 'required|in:online,offline,hygbrid',
+            'format' => 'required|in:online,offline,hybrid',
             'location' => 'required_if:format,offline',
             'online_url' => 'required_if:format,online',
             'start_at' => 'required|date',
@@ -93,7 +93,7 @@ class EventController extends Controller
             'title' => 'sometimes|required|string|max:255',
             'description' => 'sometimes|required|string',
             'category_id' => 'sometimes|required|exists:categories,id',
-            'format' => 'sometimes|required|in:online,offline,hygbrid',
+            'format' => 'sometimes|required|in:online,offline,hybrid',
             'location' => 'required_if:format,offline',
             'online_url' => 'required_if:format,online',
             'start_at' => 'sometimes|required|date',

@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
 
         Vite::prefetch(concurrency: 3);
 
+        // Hanya admin yang boleh mengakses panel admin.
+        Gate::define('admin.dashboard', fn (User $user) => $user->isAdmin());
+
         // Register Policies
         Gate::policy(Event::class, EventPolicy::class);
         Gate::policy(User::class, UserPolicy::class);

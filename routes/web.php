@@ -72,8 +72,6 @@ Route::middleware(['auth', 'verified', 'can:create,App\Models\Event'])
         Route::post('events/{event}/staff', [EventStaffController::class, 'store'])->name('events.staff.store');
         Route::delete('events/{event}/staff/{staff}', [EventStaffController::class, 'destroy'])->name('events.staff.destroy');
     });
-require __DIR__.'/auth.php';
-
 // Check-in (organizer pemilik / staff yang ditugaskan)
 Route::middleware('auth')->prefix('checkin')->name('checkin.')->group(function () {
     Route::get('/', [CheckInController::class, 'index'])->name('index');

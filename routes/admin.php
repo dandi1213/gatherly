@@ -29,11 +29,11 @@ Route::middleware(['auth', 'verified', 'can:admin.dashboard'])
 
         // Events
         Route::resource('events', EventController::class)
-            ->except(['show', 'destroy'])
+            ->except(['show'])
             ->shallow(true);
 
         // Categories
         Route::resource('categories', CategoryController::class)
-            ->except(['show', 'destroy'])
+            ->except(['show'])
             ->shallow(true);
     });
